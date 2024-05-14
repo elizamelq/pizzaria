@@ -9,3 +9,55 @@
     --cor-tamanhos: #D9D9D9;
     --cor-rodape: #CB1919;
 }
+
+body {
+    background: url(./imagens/home/banner.png);
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: var(--cor-rodape);
+}
+
+.logo {
+    width: 90px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.div__pizzas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20%;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 80px; /* Ajuste conforme necessário */
+}
+
+.pizzas {
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.imagem__pizza {
+    width: 35%;
+}
+
+.nome__pizza {
+    font-family: var(--fonte-padrao);
+    font-size: 20px;
+    padding: 5% 0 5% 0;
+}
+
+.info__pizza {
+    width: 50%; /* Ajuste conforme necessário */
+    padding: 0 20px; /* Ajuste conforme necessário */
+}
+
+.lista__ingredientes {
+    padding: 0;
+}
