@@ -1,4 +1,4 @@
-# Projeto CoderHouse - Cine House - Studio Ghibli 🎬
+# Projeto CoderHouse - Pizzaria 
 
 💻O seguinte projeto foi desenvolvido como parte do aprendizado do **Curso de Java Script** da plataforma de ensino [Coderhouse](https://www.coderhouse.com/br/).
 
