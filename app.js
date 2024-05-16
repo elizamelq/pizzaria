@@ -1,4 +1,4 @@
-/*
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const imgDiv = document.getElementById('div__pizzas');
@@ -21,4 +21,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-*/
