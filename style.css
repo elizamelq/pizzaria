@@ -37,7 +37,7 @@ header a {
     padding: 10px;
 }
 
-.div__pizzas {
+#div__pizzas {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 10%;
@@ -72,4 +72,22 @@ header a {
     font-family: var(--fonte-padrao);
     font-size: 14px;
     line-height: 1.3;
+}
+
+.barra__pesquisa{
+    border-radius: 15px;
+    border-style: none;
+    margin-top: 1.5%;
+    margin-left: 7%;
+    padding: 5px 50px;
+
+    
+}
+
+.lupa__barra__pesquisa{
+    position: relative;
+    top:4px;
+    right: 265px;
+    width: 15px;
+
 }
