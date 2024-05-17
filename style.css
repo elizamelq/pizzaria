@@ -27,8 +27,10 @@ header a {
     position: absolute;
 }
 
-.free_delivery {
-
+.free__delivery {
+    position: relative;
+    top: 220px;
+    left: 160px;
 }
 
 .logo {
