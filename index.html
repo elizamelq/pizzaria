@@ -17,11 +17,8 @@
         <img class="lupa__barra__pesquisa" src="./imagens/home/search.png" alt="" srcset="">
         <img class="free__delivery" src="./imagens/home/Component 13.png" alt="imagem de promoção">
     </header>
-    <div>
-        
-    </div>
 
-    <div id="div__pizzas">
+    <div class="div__pizzas">
         <section class="container">
             <img src="./imagens/pizzas/pizza_bacon.png" class="imagem__pizza" alt="Foto de uma pizza de bacon">
             <div class="info__pizza">
@@ -31,7 +28,12 @@
                     <li>Bacon crocante, molho barbecue picante e queijo derretido em uma crosta dourada. Uma variação
                         deliciosa de uma clássica favorita.</li>
                 </ul>
-            </div>
+                <button type="button" class="valor" onclick='document.getElementById("demo").innerHTML = "R$: 49,99"'>P</button>
+                <button type="button" class="valor" onclick='document.getElementById("demo").innerHTML = "R$: 59,99"'>M</button>
+                <button type="button" class="valor" onclick='document.getElementById("demo").innerHTML = "R$: 69,99"'>G</button>
+                <button type="button" class="valor" onclick='document.getElementById("demo").innerHTML = "R$: 79,99"'>GG</button>
+                <p id="demo"></p>
+                <button class="adicionar__carrinho">Adicionar ao carrinho</button>
         </section>
         <section class="container">
             <img src="./imagens/pizzas/pizza_peperone.png" class="imagem__pizza" alt="Foto de uma pizza de Peperone">
@@ -104,6 +106,16 @@
             </div>
         </section>
     </div>
+    <div class="map__box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.6119896680107!2d-46.64144402391478!3d-23.546454061046166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5853afdeba19%3A0x10e2d85d1d972dfd!2sShopping%20Light!5e0!3m2!1spt-BR!2sbr!4v1717691894473!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <footer class="rodape">
+        <div class="div__rodape">
+        <a><img src="./imagens/home/logo.png" class="img_rodape" alt="Logo coderhouse"></a> 
+        <p class="descricao__rodape">Descubra a autenticidade em cada fatia na nossa Pizzaria. Ingredientes frescos, sabores genuínos. Experimente a verdadeira paixão pela pizza.</p>
+    </div>
+    </footer>
+
 </body>
 
 </html>
