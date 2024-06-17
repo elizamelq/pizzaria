@@ -10,21 +10,21 @@
     --cor-rodape: #CB1919;
 }
 
-body {
-    background: url(./imagens/home/banner.png);
-    background-repeat: no-repeat;
-}
 
 header {
-    background-color: var(--cor-rodape);
+    height: 100px;
+    background-image: linear-gradient( to right, #CB1919 40%, #E93939 );;
     background-size: cover;
     overflow: visible;
     position: relative;
-    min-height: 80px;
 }
 
 header a { 
     position: absolute;
+}
+
+.banner{
+    margin-bottom: 10%;
 }
 
 .logo {
@@ -34,33 +34,34 @@ header a {
 }
 
 .barra__pesquisa{
+    position: absolute;
     border-radius: 15px;
     border-style: none;
-    margin-top: 1.5%;
+    margin-top: 2%;
     margin-left: 7%;
     padding: 5px 50px;
 }
 
 .lupa__barra__pesquisa{
-    position: relative;
-    top:4px;
-    right: 245px;
-    width: 15px;
+    position: absolute;
+    top: 42px;
+    left: 137px;
+    width: 20px;
 
 }
 
 .free__delivery {
-    position: relative;
-    top: 220px;
-    left: 130px;
+    position: absolute;
+    top: 280%;
+    left: 30%;
 }
 
 .div__pizzas {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 10%;
     gap: 20px;
     padding: 10%;
+    grid-area: container, container;
 }
 
 .container {
@@ -94,7 +95,7 @@ header a {
     padding: 0 0 1rem;
 }
 
-.valor {
+button {
     background-color: var(--cor-tamanhos);
     text-decoration: none;
     border: none;
@@ -105,6 +106,21 @@ header a {
     padding: 6px 8px;
     border-radius: 10%;
     font-weight: bold;
+
+}
+
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
+button:active{
+    background-color: var(--cor-tamanhos);
+    color: white;
 }
 
 .adicionar__carrinho {
@@ -145,4 +161,8 @@ header a {
 .descricao__rodape {
     padding: 1% 0% 1%;
     color: var(--cor-fundo); 
+}
+
+.clicked {
+    background-color: #FF5733; /* Nova cor quando clicado */
 }
