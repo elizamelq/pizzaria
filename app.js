@@ -44,3 +44,62 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const valorButtons = document.querySelectorAll('.valor');
+    const addToCartButtons = document.querySelectorAll('.adicionar__carrinho');
+    const cartItemsList = document.getElementById('carrinho-itens');
+    const cartTotal = document.getElementById('carrinho-total');
+
+    let selectedItem = null;
+
+    valorButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            valorButtons.forEach(btn => {
+                btn.classList.remove('clicked');
+                btn.style.backgroundColor = 'var(--cor-tamanhos)';
+            });
+
+            this.classList.add('clicked');
+            this.style.backgroundColor = '#FF5733';
+            selectedItem = {
+                price: parseFloat(this.getAttribute('data-price')),
+                size: this.getAttribute('data-size'),
+                name: this.closest('.info__pizza').querySelector('.nome__pizza').textContent
+            };
+        });
+    });
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (!selectedItem) {
+                alert('Por favor, selecione um tamanho.');
+                return;
+            }
+
+            const cartItem = document.createElement('li');
+            cartItem.textContent = `${selectedItem.name} (${selectedItem.size}) - R$ ${selectedItem.price.toFixed(2)}`;
+            cartItem.setAttribute('data-price', selectedItem.price);
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.addEventListener('click', function() {
+                cartItemsList.removeChild(cartItem);
+                updateCartTotal();
+            });
+
+            cartItem.appendChild(removeButton);
+            cartItemsList.appendChild(cartItem);
+
+            updateCartTotal();
+        });
+    });
+
+    function updateCartTotal() {
+        let total = 0;
+        cartItemsList.querySelectorAll('li').forEach(item => {
+            total += parseFloat(item.getAttribute('data-price'));
+        });
+        cartTotal.textContent = total.toFixed(2);
+    }
+});
