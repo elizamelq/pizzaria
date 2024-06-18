@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.adicionar__carrinho');
     const cartItemsList = document.getElementById('carrinho-itens');
     const cartTotal = document.getElementById('carrinho-total');
+    const pagarButton = document.getElementById('pagar-btn');
 
     let selectedItem = null;
 
@@ -102,4 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartTotal.textContent = total.toFixed(2);
     }
+
+    pagarButton.addEventListener('click', function() {
+        if (cartItemsList.children.length === 0) {
+            alert('O carrinho está vazio.');
+            return;
+        }
+        
+        alert('Redirecionando para a página de pagamento...');
+        // Aqui você pode adicionar a lógica para redirecionar ou processar o pagamento
+    });
 });
