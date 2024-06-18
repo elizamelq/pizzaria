@@ -24,7 +24,6 @@ header a {
 }
 
 .banner{
-    margin-bottom: 10%;
 }
 
 .logo {
@@ -86,8 +85,12 @@ header a {
 }
 
 .info__pizza {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
     width: 50%;
     padding: 0 20px; 
+    
 }
 
 .lista__ingredientes {
