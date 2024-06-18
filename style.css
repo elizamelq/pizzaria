@@ -56,7 +56,9 @@ header a {
     left: 30%;
 }
 
-.div__pizzas {
+
+
+#div__pizzas {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
