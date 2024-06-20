@@ -17,33 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.style.display = 'none';
                 img.parentElement.style.display = 'none';
             }
-        });
-    });
-
-    // Seleciona todos os botões com a classe 'valor'
-    const valorButtons = document.querySelectorAll('.valor');
-    
-    valorButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Se o botão já está selecionado
-            if (this.classList.contains('clicked')) {
-                // Desmarca o botão clicado e restaura a cor original
-                this.classList.remove('clicked');
-                this.style.backgroundColor = 'var(--cor-tamanhos)';
-            } else {
-                // Remove a classe 'clicked' e restaura a cor original de todos os botões
-                valorButtons.forEach(btn => {
-                    btn.classList.remove('clicked');
-                    btn.style.backgroundColor = 'var(--cor-tamanhos)';
-                });
-
-                // Adiciona a classe 'clicked' e muda a cor do botão clicado
-                this.classList.add('clicked');
-                this.style.backgroundColor = '#FF5733'; // Nova cor
-            }
-        });
-    });
+        });
+    });
 });
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const valorButtons = document.querySelectorAll('.valor');
@@ -53,21 +31,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const pagarButton = document.getElementById('pagar-btn');
 
     let selectedItem = null;
+    const shippingCost = 10.00;
+    let shippingItem = null;
 
     valorButtons.forEach(button => {
         button.addEventListener('click', function() {
-            valorButtons.forEach(btn => {
-                btn.classList.remove('clicked');
-                btn.style.backgroundColor = 'var(--cor-tamanhos)';
-            });
+            const valueDisplay = this.nextElementSibling;
 
-            this.classList.add('clicked');
-            this.style.backgroundColor = '#FF5733';
-            selectedItem = {
-                price: parseFloat(this.getAttribute('data-price')),
-                size: this.getAttribute('data-size'),
-                name: this.closest('.info__pizza').querySelector('.nome__pizza').textContent
-            };
+            if (this.classList.contains('clicked')) {
+                this.classList.remove('clicked');
+                valueDisplay.textContent = '';
+                valueDisplay.classList.remove('visible');
+                valueDisplay.classList.add('hidden');
+            } else {
+                valorButtons.forEach(btn => {
+                    btn.classList.remove('clicked');
+                    const sibling = btn.nextElementSibling;
+                    sibling.textContent = '';
+                    sibling.classList.remove('visible');
+                    sibling.classList.add('hidden');
+                });
+
+                this.classList.add('clicked');
+                valueDisplay.textContent = `R$ ${this.getAttribute('data-price')}`;
+                valueDisplay.classList.remove('hidden');
+                valueDisplay.classList.add('visible');
+                selectedItem = {
+                    price: parseFloat(this.getAttribute('data-price')),
+                    size: this.getAttribute('data-size'),
+                    name: this.closest('.info__pizza').querySelector('.nome__pizza').textContent
+                };
+            }
         });
     });
 
@@ -92,16 +86,46 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItem.appendChild(removeButton);
             cartItemsList.appendChild(cartItem);
 
+            // Reset selected item and button states
+            selectedItem = null;
+            valorButtons.forEach(btn => {
+                btn.classList.remove('clicked');
+                const sibling = btn.nextElementSibling;
+                sibling.textContent = '';
+                sibling.classList.remove('visible');
+                sibling.classList.add('hidden');
+            });
+
             updateCartTotal();
         });
     });
 
     function updateCartTotal() {
         let total = 0;
+        let itemCount = 0;
+
+        // Remove o item de frete se ele existir antes de recalcular
+        if (shippingItem && cartItemsList.contains(shippingItem)) {
+            cartItemsList.removeChild(shippingItem);
+            shippingItem = null;
+        }
+
         cartItemsList.querySelectorAll('li').forEach(item => {
             total += parseFloat(item.getAttribute('data-price'));
+            itemCount++;
         });
-        cartTotal.textContent = total.toFixed(2);
+
+        if (itemCount > 0 && itemCount < 3) {
+            if (!shippingItem) {
+                shippingItem = document.createElement('li');
+                shippingItem.textContent = `Frete - R$ ${shippingCost.toFixed(2)}`;
+                shippingItem.setAttribute('data-price', shippingCost);
+                cartItemsList.appendChild(shippingItem);
+            }
+            total += shippingCost;
+        }
+
+        cartTotal.textContent = `R$ ${total.toFixed(2)}`;
     }
 
     pagarButton.addEventListener('click', function() {

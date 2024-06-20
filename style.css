@@ -127,6 +127,7 @@ button:active{
 }
 
 .adicionar__carrinho {
+    display: block;
     background-color: var(--cor-botao);
     text-decoration: none;
     border: none;
@@ -222,4 +223,8 @@ button:active{
 
 #pagar-btn:hover {
     background-color: var(--cor-rodape);
+}
+
+.value-display{
+    display: inline-block;
 }
